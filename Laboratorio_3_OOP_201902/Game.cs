@@ -17,7 +17,8 @@ namespace Laboratorio_3_OOP_201902
         //Constructor
         public Game()
         {
-
+            this.players = new array<Player>();
+            this.decks = new List<Deck>();
         }
 
         //Propiedades
@@ -91,6 +92,30 @@ namespace Laboratorio_3_OOP_201902
         public void Play()
         {
             throw new NotImplementedException();
+        }
+
+        public void addDeck()
+        {
+            string path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + @"\Files\Decks.txt";
+            using (StreamReader deckFile = new StreamReader(Path))
+            {
+                int cont = 0;
+                string line;
+
+                while ((line = deckFile.ReadLine()) != null)
+                {
+                    if (line == "START")
+                    {
+                        deckFile.Read();
+                        while (line =! "end")
+                        {
+
+                        }
+                    cont++;
+                }
+                deckFile.Close();
+                
+            }
         }
     }
 }
