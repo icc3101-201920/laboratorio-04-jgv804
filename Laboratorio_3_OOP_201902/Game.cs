@@ -97,7 +97,9 @@ namespace Laboratorio_3_OOP_201902
         public void addDeck()
         {
             string path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + @"\Files\Decks.txt";
+            string[] carda = new array<string>();
             using (StreamReader deckFile = new StreamReader(Path))
+                
             {
                 int cont = 0;
                 string line;
@@ -107,9 +109,17 @@ namespace Laboratorio_3_OOP_201902
                     if (line == "START")
                     {
                         deckFile.Read();
-                        while (line =! "end")
+                        while (line =! "END\n")
                         {
-
+                            Card carta = new Card();
+                            carda = line.split(",", 5, StringSplitOptions.RemoveEmptyEntries);
+                            carta.Name = carda[0];
+                            carta.Type = carda[1];
+                            carta.Effect = carda[2];
+                            if (carda[1]== "CombatCard")
+                            {
+                                carta.attackpoints = carda[3];
+                            }
                         }
                     cont++;
                 }
