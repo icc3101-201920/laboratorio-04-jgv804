@@ -15,6 +15,6 @@ namespace Laboratorio_3_OOP_201902.Enums
         buffrange,
         bufflongRange,
         captain,
-        weather
+        weather,
     }
 }

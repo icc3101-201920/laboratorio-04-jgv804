@@ -14,18 +14,18 @@ namespace Laboratorio_3_OOP_201902.Cards
         {
             get
             {
-                return this.buffType;
+                return buffType;
             }
             set
             {
-                this.buffType = value;
+                buffType = value;
             }
         }
         //Constructor
-        public SpecialCard(string name, string type, string effect)
+        public SpecialCard(string name, string enumtype, string effect)
         {
             Name = name;
-            Type = type;
+            EnumType = enumtype;
             Effect = effect;
             BuffType = null;
         }
