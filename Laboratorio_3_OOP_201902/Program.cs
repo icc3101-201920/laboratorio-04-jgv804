@@ -1,6 +1,8 @@
 ﻿using Laboratorio_3_OOP_201902.Cards;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace Laboratorio_3_OOP_201902
 {
@@ -37,6 +39,28 @@ namespace Laboratorio_3_OOP_201902
             Console.WriteLine(String.Join(", ", board.GetMeleeAttackPoints()));
             Console.WriteLine(String.Join(", ", board.GetRangeAttackPoints()));
             Console.WriteLine(board.WeatherCards.Count);
+            string path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + @"\Files\Decks.txt";
+            Player[] jugadores = new Player[2];
+            Player activo = new Player();
+            List<Deck> mazo = new List<Deck>();
+            Board Tabla = new Board();
+            bool j = true;
+
+            Game game = new Game(jugadores,activo,mazo,Tabla,j);
+            game.addDeck();
+            Console.WriteLine("hola");
+            Console.WriteLine(game.Decks.Count());
+            for (int k=0; k<game.Decks.Count(); k++)
+            {
+                for(int i = 0; i < game.Decks[k].Cards.Count(); i++)
+                {
+                    
+                    Console.WriteLine(game.Decks[k].Cards[i].Name);
+
+                }
+                
+            }
+
         }
     }
 }

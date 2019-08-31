@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
 
 namespace Laboratorio_3_OOP_201902
 {
@@ -15,12 +16,16 @@ namespace Laboratorio_3_OOP_201902
         private bool endGame;
 
         //Constructor
-        public Game()
+        public Game(Player[] players, Player activeplayer, List<Deck> decks, Board boardgame, bool endgame)
         {
-            this.players = new array<Player>();
-            this.decks = new List<Deck>();
+            this.players = players;
+            this.decks = decks; 
+            this.boardGame = boardgame;
+            this.activePlayer = activeplayer;
+            this.endGame = endgame;
+            
         }
-
+     
         //Propiedades
         public Player[] Players
         {
@@ -52,6 +57,10 @@ namespace Laboratorio_3_OOP_201902
             get
             {
                 return this.boardGame;
+            }
+            set
+            {
+                boardGame = value;
             }
         }
         public bool EndGame
@@ -96,36 +105,56 @@ namespace Laboratorio_3_OOP_201902
 
         public void addDeck()
         {
+            
+            List<Deck> decku = new List<Deck>();
             string path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + @"\Files\Decks.txt";
-            string[] carda = new array<string>();
-            using (StreamReader deckFile = new StreamReader(Path))
-                
-            {
-                int cont = 0;
-                string line;
+            string[] carda = new string[6];
+            using (StreamReader deckFile = new StreamReader(path))
 
+            {
+                
+                string line;
+                Console.WriteLine(path);
                 while ((line = deckFile.ReadLine()) != null)
+
                 {
+                    Deck deckd = new Deck();
+                    deckd.Cards = new List<Card>();
+                    //Console.WriteLine(line);//
                     if (line == "START")
                     {
-                        deckFile.Read();
-                        while (line =! "END\n")
+                        Console.WriteLine(line);
+                        
+                        while ((line = deckFile.ReadLine()) != null)
                         {
-                            Card carta = new Card();
-                            carda = line.split(",", 5, StringSplitOptions.RemoveEmptyEntries);
-                            carta.Name = carda[0];
-                            carta.Type = carda[1];
-                            carta.Effect = carda[2];
-                            if (carda[1]== "CombatCard")
+                            Console.WriteLine(line);
+                            carda = line.Split(",", 6, StringSplitOptions.RemoveEmptyEntries);
+
+                            if (carda[0] == "CombatCard")
                             {
-                                carta.attackpoints = carda[3];
+                                Card carte = new CombatCard(carda[1], carda[2], carda[3], int.Parse(carda[4]), bool.Parse(carda[5]));
+                                deckd.AddCard(carte);
+
+                            }
+                            if(carda[0]=="SpecialCard")
+                            {
+                                deckd.AddCard(new SpecialCard(carda[1], carda[2], carda[3]));
+                            }
+                            if(line == "END")
+                            {
+                                break;
                             }
                         }
-                    cont++;
+                        decku.Add(deckd);  
+                    }
+
+                    
+
                 }
                 deckFile.Close();
-                
+
             }
+            this.decks = decku;
         }
     }
 }

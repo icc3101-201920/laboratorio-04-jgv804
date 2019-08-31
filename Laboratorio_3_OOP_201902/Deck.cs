@@ -12,14 +12,16 @@ namespace Laboratorio_3_OOP_201902
 
         public Deck()
         {
-
+            
         }
 
         public List<Card> Cards { get => cards; set => cards = value; }
 
+
+
         public void AddCard(Card card)
         {
-            throw new NotImplementedException();
+            this.cards.Add(card);
         }
         public void DestroyCard(int cardId)
         {
