@@ -102,8 +102,8 @@ namespace Laboratorio_3_OOP_201902
             //Guardar las cartas de capitan en una variable temporal
             List<Card>[] captainCards = new List<Card>[DEFAULT_NUMBER_OF_PLAYERS] 
             {
-                new List<Card>(playerCards[0]["captain"]),
-                new List<Card>(playerCards[1]["captain"])
+                new List<Card>(playerCards[0][EnumType.captain]),
+                new List<Card>(playerCards[1][EnumType.captain])
             };
             //Destruir todas las cartas
             this.playerCards = new Dictionary<string, List<Card>>[DEFAULT_NUMBER_OF_PLAYERS];
@@ -120,9 +120,9 @@ namespace Laboratorio_3_OOP_201902
             int[] totalAttack = new int[] { 0, 0 };
             for (int i=0; i < 2; i++)
             {
-                if (playerCards[i].ContainsKey("melee"))
+                if (playerCards[i].ContainsKey(EnumType.melee))
                 {
-                    foreach (CombatCard card in playerCards[i]["melee"])
+                    foreach (CombatCard card in playerCards[i][Enumtype.melee])
                     {
                         totalAttack[i] += card.AttackPoints;
                     }
@@ -137,9 +137,9 @@ namespace Laboratorio_3_OOP_201902
             int[] totalAttack = new int[] { 0, 0 };
             for (int i = 0; i < 2; i++)
             {
-                if (playerCards[i].ContainsKey("range"))
+                if (playerCards[i].ContainsKey(EnumType.range))
                 {
-                    foreach (CombatCard card in playerCards[i]["range"])
+                    foreach (CombatCard card in playerCards[i][EnumType.range])
                     {
                         totalAttack[i] += card.AttackPoints;
                     }
@@ -153,9 +153,9 @@ namespace Laboratorio_3_OOP_201902
             int[] totalAttack = new int[] { 0, 0 };
             for (int i = 0; i < 2; i++)
             {
-                if (playerCards[i].ContainsKey("longRange"))
+                if (playerCards[i].ContainsKey(EnumType.longrange))
                 {
-                    foreach (CombatCard card in playerCards[i]["longRange"])
+                    foreach (CombatCard card in playerCards[i][EnumType.longrange])
                     {
                         totalAttack[i] += card.AttackPoints;
                     }

@@ -133,13 +133,13 @@ namespace Laboratorio_3_OOP_201902
 
                             if (carda[0] == "CombatCard")
                             {
-                                Card carte = new CombatCard(carda[1], carda[2], carda[3], int.Parse(carda[4]), bool.Parse(carda[5]));
+                                Card carte = new CombatCard(carda[1], (EnumType)Enum.Parse(typeof(Enumtype), carda[2]), carda[3], int.Parse(carda[4]), bool.Parse(carda[5]));
                                 deckd.AddCard(carte);
 
                             }
                             if(carda[0]=="SpecialCard")
                             {
-                                deckd.AddCard(new SpecialCard(carda[1], carda[2], carda[3]));
+                                deckd.AddCard(new SpecialCard(carda[1], (EnumType)Enum.Parse(typeof(Enumtype), carda[2]), carda[3]));
                             }
                             if(line == "END")
                             {
