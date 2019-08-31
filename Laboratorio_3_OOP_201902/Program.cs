@@ -45,12 +45,14 @@ namespace Laboratorio_3_OOP_201902
             List<Deck> mazo = new List<Deck>();
             Board Tabla = new Board();
             bool j = true;
-
-            Game game = new Game(jugadores,activo,mazo,Tabla,j);
+            List<SpecialCard> capi = new List<SpecialCard>();
+            Game game = new Game(jugadores,activo,mazo,Tabla,j,capi);
             game.addDeck();
-            Console.WriteLine("hola");
-            Console.WriteLine(game.Decks.Count());
-            for (int k=0; k<game.Decks.Count(); k++)
+            game.AddCaptains();
+            //Console.WriteLine(game.Captains.Count());//
+            //Console.WriteLine("hola");//
+            //Console.WriteLine(game.Decks.Count());//
+            /*for (int k=0; k<game.Decks.Count(); k++)
             {
                 for(int i = 0; i < game.Decks[k].Cards.Count(); i++)
                 {
@@ -60,7 +62,12 @@ namespace Laboratorio_3_OOP_201902
                 }
                 
             }
-
+            
+            for(int p = 0; p < game.Captains.Count(); p++)
+            {
+                Console.WriteLine(game.Captains[p].Name);
+            }
+            */
         }
     }
 }

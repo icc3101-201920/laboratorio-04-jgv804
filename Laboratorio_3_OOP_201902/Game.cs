@@ -14,15 +14,16 @@ namespace Laboratorio_3_OOP_201902
         private List<Deck> decks;
         private Board boardGame;
         private bool endGame;
-
+        private List<SpecialCard> captains;
         //Constructor
-        public Game(Player[] players, Player activeplayer, List<Deck> decks, Board boardgame, bool endgame)
+        public Game(Player[] players, Player activeplayer, List<Deck> decks, Board boardgame, bool endgame, List<SpecialCard> captains)
         {
             this.players = players;
             this.decks = decks; 
             this.boardGame = boardgame;
             this.activePlayer = activeplayer;
             this.endGame = endgame;
+            this.captains = captains;
             
         }
      
@@ -74,7 +75,7 @@ namespace Laboratorio_3_OOP_201902
                 endGame = value;
             }
         }
-
+        public List<SpecialCard> Captains { get => captains; set => captains = value; }
         //Metodos
         public bool CheckIfEndGame()
         {
@@ -114,7 +115,7 @@ namespace Laboratorio_3_OOP_201902
             {
                 
                 string line;
-                Console.WriteLine(path);
+                //Console.WriteLine(path);//
                 while ((line = deckFile.ReadLine()) != null)
 
                 {
@@ -123,11 +124,11 @@ namespace Laboratorio_3_OOP_201902
                     //Console.WriteLine(line);//
                     if (line == "START")
                     {
-                        Console.WriteLine(line);
+                        //Console.WriteLine(line);//
                         
                         while ((line = deckFile.ReadLine()) != null)
                         {
-                            Console.WriteLine(line);
+                            //Console.WriteLine(line);//
                             carda = line.Split(",", 6, StringSplitOptions.RemoveEmptyEntries);
 
                             if (carda[0] == "CombatCard")
@@ -156,5 +157,28 @@ namespace Laboratorio_3_OOP_201902
             }
             this.decks = decku;
         }
+
+        public void AddCaptains()
+        {
+            string path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + @"\Files\Captains.txt";
+            string[] capta = new string[4];
+            List<SpecialCard> capis = new List<SpecialCard>();
+            using (StreamReader deckFile = new StreamReader(path))
+
+            {
+                string line;
+                while ((line = deckFile.ReadLine()) != null)
+                {
+                    capta = line.Split(",", 4, StringSplitOptions.RemoveEmptyEntries);
+                    capis.Add(new SpecialCard(capta[1], capta[2], capta[3]));
+                }
+
+
+            }
+            this.Captains = capis;
+        }
+
+
+
     }
 }
