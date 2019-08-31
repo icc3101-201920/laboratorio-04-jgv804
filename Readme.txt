@@ -1,0 +1,2 @@
+implemente el enumtype segun lo dice el enunciado, cree el archivo y la clase enumtype como fue estipulado, pero no me lo reconocio,de todas formas puede que sea algo de mi computador al implementarlo,
+pero si a usted no le reconoce tampoco, por favor considerar el programa en el commit anterior a la implementacion del enumtype(si es que me quedo muy malo el cambio de type a enumtype)
